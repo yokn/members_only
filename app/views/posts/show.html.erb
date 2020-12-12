@@ -1,0 +1,8 @@
+<h1><%= @post.title %></h1>
+
+<p><%= @post.body %></p>
+
+<%= link_to "<< Back to Posts List", posts_path %>
+
+<%= link_to "delete", post_path(@post), method: :delete, data: {confirm: "Really delete the post?"} %>
+<%= link_to "edit", edit_post_path(@post) %>

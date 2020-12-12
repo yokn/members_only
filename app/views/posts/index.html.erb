@@ -1,0 +1,26 @@
+<h1>All posts</h1>
+<p>Login to see who wrote what!</p>
+
+<ul id="posts">
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post_path(post) %> 
+
+      <%= "by " + ((user_signed_in?) ? post.user.email : "anonymous") %>
+     
+
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a New post", new_post_path, class: "new_post" %>
+
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path) %>  
+  </li>
+<% end %>
